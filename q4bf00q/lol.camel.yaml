@@ -1,0 +1,9 @@
+- route:
+    id: route-0712
+    from:
+      uri: kamelet:custom-weather-source
+      id: from-bd17
+      parameters:
+        city: amman
+        country: jordan
+      description: loll
