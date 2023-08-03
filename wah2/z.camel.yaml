@@ -1,0 +1,13 @@
+- route:
+    id: route-1db1
+    from:
+      uri: kamelet:custom-earthquake-source
+      id: from-f013
+      parameters:
+        period: 1000
+        lookAhead: 1
+      steps:
+        - log:
+            message: ${body}
+            id: log-75ff
+            loggingLevel: INFO
