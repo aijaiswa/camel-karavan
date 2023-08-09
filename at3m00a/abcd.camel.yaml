@@ -1,0 +1,10 @@
+- route:
+    id: route-fe36
+    from:
+      uri: rest-api:/a
+      id: from-45b9
+- route:
+    id: route-cfe0
+    from:
+      uri: rest-api:/b
+      id: from-fe40
