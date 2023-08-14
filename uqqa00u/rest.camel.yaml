@@ -1,32 +1,254 @@
 - route:
-    id: route-15a8
+    id: route-6e45
     from:
-      uri: rest-api:/arooo
-      id: from-28d3
+      uri: rest:get:/planned:/order
+      id: from-3357
+      steps:
+        - removeHeader:
+            name: Exchange.HTTP_PATH
+            id: removeHeader-48cd
+        - to:
+            uri: >-
+              https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata4/sap/api_plannedorder/srvd_a2x/sap/plannedorder/0001/PlannedOrderCapacity
+            id: to-b05e
+            parameters:
+              bridgeEndpoint: true
+              httpMethod: GET
+              copyHeaders: true
+        - transform:
+            id: transform-3706
+            expression:
+              js:
+                expression: |-
+                  var v = {
+                      "@odata.context": "$metadata#PlannedOrderCapacity",
+                      "@odata.metadataEtag": "W/\"20230309101136\"",
+                      "value": [
+                          {
+                              "@odata.etag": "W/\"SADL-020170830045836C~20170830045836\"",
+                              "PlannedOrder": "39",
+                              "CapacityRequirement": "10000005168",
+                              "CapacityRequirementItem": "1",
+                              "CapacityRqmtItemCapacity": "512",
+                              "PlannedOrderType": "PE",
+                              "Sequence": "0",
+                              "Operation": "10",
+                              "SubOperation": "",
+                              "WorkCenter": "WINDING",
+                              "CapacityCategoryCode": "001",
+                              "Capacity": "",
+                              "MRPController": "001",
+                              "MRPPlant": "1010",
+                              "OperationLatestStartDate": "2017-09-01",
+                              "OperationLatestStartTime": "07:00:00",
+                              "OperationLatestEndDate": "2017-09-01",
+                              "OperationLatestEndTime": "07:02:15",
+                              "OperationEarliestStartDate": "2017-09-01",
+                              "OperationEarliestStartTime": "07:00:00",
+                              "OperationEarliestEndDate": "2017-09-01",
+                              "OperationEarliestEndTime": "07:02:15",
+                              "OpLtstSchedldProcgStrtDte": "2017-09-01",
+                              "OpLtstSchedldProcgStrtTme": "07:00:00",
+                              "OpLtstSchedldTrdwnStrtDte": "2017-09-01",
+                              "OpLtstSchedldTrdwnStrtTme": "07:02:15",
+                              "ScheduledBasicEndTime": "07:02:15",
+                              "ScheduledBasicStartTime": "07:00:00",
+                              "CapacityRequirementUnit": "MIN",
+                              "UnitOfMeasureISOCode": "MIN",
+                              "ScheduledCapReqOpSegSetupDurn": 1E1,
+                              "RemainingCapReqOpSegSetupDurn": 1E1,
+                              "ScheduledCapReqOpSegProcgDurn": 2E0,
+                              "RemainingCapReqOpSegProcgDurn": 2E0,
+                              "ScheduledCapReqOpSegTrdwnDurn": 0,
+                              "RemainingCapReqOpSegTrdwnDurn": 0,
+                              "WrkCtrHasLeadingCapacity": true,
+                              "OperationText": "Winding",
+                              "PlannedOrderLastChangeDateTime": "2017-08-30T04:58:36Z",
+                              "SAP__Messages": []
+                          },
+                          {
+                              "@odata.etag": "W/\"SADL-020170830045836C~20170830045836\"",
+                              "PlannedOrder": "378",
+                              "CapacityRequirement": "10000005169",
+                              "CapacityRequirementItem": "1",
+                              "CapacityRqmtItemCapacity": "512",
+                              "PlannedOrderType": "PE",
+                              "Sequence": "0",
+                              "Operation": "10",
+                              "SubOperation": "",
+                              "WorkCenter": "WINDING",
+                              "CapacityCategoryCode": "001",
+                              "Capacity": "",
+                              "MRPController": "001",
+                              "MRPPlant": "1010",
+                              "OperationLatestStartDate": "2017-09-01",
+                              "OperationLatestStartTime": "07:00:00",
+                              "OperationLatestEndDate": "2017-09-01",
+                              "OperationLatestEndTime": "07:09:00",
+                              "OperationEarliestStartDate": "2017-09-01",
+                              "OperationEarliestStartTime": "07:00:00",
+                              "OperationEarliestEndDate": "2017-09-01",
+                              "OperationEarliestEndTime": "07:09:00",
+                              "OpLtstSchedldProcgStrtDte": "2017-09-01",
+                              "OpLtstSchedldProcgStrtTme": "07:00:00",
+                              "OpLtstSchedldTrdwnStrtDte": "2017-09-01",
+                              "OpLtstSchedldTrdwnStrtTme": "07:09:00",
+                              "ScheduledBasicEndTime": "07:09:00",
+                              "ScheduledBasicStartTime": "07:00:00",
+                              "CapacityRequirementUnit": "MIN",
+                              "UnitOfMeasureISOCode": "MIN",
+                              "ScheduledCapReqOpSegSetupDurn": 1E1,
+                              "RemainingCapReqOpSegSetupDurn": 1E1,
+                              "ScheduledCapReqOpSegProcgDurn": 8E0,
+                              "RemainingCapReqOpSegProcgDurn": 8E0,
+                              "ScheduledCapReqOpSegTrdwnDurn": 0,
+                              "RemainingCapReqOpSegTrdwnDurn": 0,
+                              "WrkCtrHasLeadingCapacity": true,
+                              "OperationText": "Winding",
+                              "PlannedOrderLastChangeDateTime": "2017-08-30T04:58:36Z",
+                              "SAP__Messages": []
+                          }
+                      ]
+                  };
+
+                  body = v.value.map(function(element) {
+                                return {"PlannedOrder": element.PlannedOrder, "CapacityRequirement": element.CapacityRequirement};
+                            });
+                id: js-d97f
+        - log:
+            message: message body = ${body}
+            id: log-4b46
+- route:
+    id: route-b03b
+    from:
+      uri: rest:get:/sharepoint:/items
+      id: from-ca3b
+      steps:
+        - removeHeader:
+            name: Exchange.HTTP_PATH
+            id: removeHeader-c23b
+        - transform:
+            id: transform-a366
+            expression:
+              simple:
+                expression: >-
+                  grant_type=client_credentials&client_id=${header.client-id}@${header.tenant-id}&client_secret=${header.client-secret}&resource=00000003-0000-0ff1-ce00-000000000000/neomsa.sharepoint.com@${header.tenant-id}
+                id: simple-2e65
+        - setHeader:
+            name: Content-Type
+            id: setHeader-20d7
+            expression:
+              constant:
+                expression: application/x-www-form-urlencoded
+                id: constant-ec17
+        - setHeader:
+            name: Exchange.HTTP_PATH
+            id: setHeader-85a6
+            expression:
+              simple:
+                expression: ${header.tenant-id}/tokens/OAuth/2
+                id: simple-6b87
+        - to:
+            uri: https://accounts.accesscontrol.windows.net/
+            id: to-0321
+            parameters:
+              bridgeEndpoint: true
+              httpMethod: POST
+              clearExpiredCookies: true
+        - removeHeaders:
+            pattern: CamelHttp*
+            id: removeHeaders-6697
+        - transform:
+            id: transform-feba
+            expression:
+              jsonpath:
+                expression: $.access_token
+                id: jsonpath-320b
+        - setHeader:
+            name: Authorization
+            id: setHeader-7d14
+            expression:
+              simple:
+                expression: Bearer ${body}
+                id: simple-b854
+        - setHeader:
+            name: Exchange.HTTP_PATH
+            id: setHeader-2f35
+            expression:
+              simple:
+                expression: getbytitle('${header.title}')/items?$filter=${header.filter}
+                id: simple-4c66
+        - setHeader:
+            name: Accept
+            id: setHeader-25bb
+            expression:
+              constant:
+                expression: application/json;odata= nometadata
+                id: constant-f0a3
+        - setHeader:
+            name: Content-Type
+            id: setHeader-3bc9
+            expression:
+              constant:
+                expression: application/json;odata=verbose
+                id: constant-2838
+        - to:
+            uri: >-
+              https://neomsa.sharepoint.com/sites/OXAGONWarehouseManagementSystem/_api/web/lists/
+            id: to-10a2
+            parameters:
+              bridgeEndpoint: true
+              httpMethod: GET
+              copyHeaders: true
+              clearExpiredCookies: true
+        - log:
+            message: Response == ${body}
+            id: log-ba9b
+        - transform:
+            id: transform-28e4
+            expression:
+              simple:
+                expression: ${body}
+                id: simple-c092
+- route:
+    id: route-79ab
+    from:
+      uri: rest-api:/hiii
+      id: from-317e
+      steps:
+        - transform:
+            id: transform-4b86
+            expression:
+              constant:
+                expression: hihi
+                id: constant-6403
+- route:
+    id: route-71db
+    from:
+      uri: rest-api:/LLELEEL
+      id: from-8348
+      steps:
+        - transform:
+            id: transform-db44
+            expression:
+              constant:
+                expression: jjj
+                id: constant-5536
 - rest:
-    id: rest-b725
+    id: rest-a934
     delete:
-      - id: delete-ccd6
-        path: /delete1
-        to: /new
-      - id: delete-534a
-        path: /delete2
-        to: /new
+      - id: delete-04f4
+        path: /ok5
     get:
-      - id: get-869d
-        path: /get1
-        to: /new
-      - id: get-8460
-        path: /get2
-        to: /new
-      - id: get-24c6
-        path: /get3
-        to: /new
+      - id: get-8b85
+        path: /ok1
+    patch:
+      - id: patch-3a4b
+        path: /ok4
     post:
-      - id: post-3419
-        path: /post1
-        to: /new
-      - id: post-e1c6
-        path: /post2
-        to: /new
-    path: /temp
+      - id: post-d108
+        path: /ok2
+    put:
+      - id: put-e9f9
+        path: /ok3
+    path: /lolllqq
