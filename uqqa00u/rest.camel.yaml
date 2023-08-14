@@ -5,6 +5,13 @@
       id: from-28d3
 - rest:
     id: rest-b725
+    delete:
+      - id: delete-ccd6
+        path: /delete1
+        to: /new
+      - id: delete-534a
+        path: /delete2
+        to: /new
     get:
       - id: get-869d
         path: /get1
@@ -14,5 +21,12 @@
         to: /new
       - id: get-24c6
         path: /get3
+        to: /new
+    post:
+      - id: post-3419
+        path: /post1
+        to: /new
+      - id: post-e1c6
+        path: /post2
         to: /new
     path: /temp
