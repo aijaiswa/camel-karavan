@@ -1,0 +1,24 @@
+- route:
+    id: route-59d4
+    from:
+      uri: rest-api:/hii
+      id: from-13f5
+      steps:
+        - transform:
+            id: transform-824f
+            expression:
+              constant:
+                expression: hiii
+                id: constant-8428
+- route:
+    id: route-6e4b
+    from:
+      uri: rest-api:/byee
+      id: from-84a3
+      steps:
+        - transform:
+            id: transform-e3f7
+            expression:
+              constant:
+                expression: trjwetowr
+                id: constant-f14a
