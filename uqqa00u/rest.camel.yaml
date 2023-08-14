@@ -240,10 +240,6 @@
       - id: get-8b85
         path: /ok6
         to: /new
-    patch:
-      - id: patch-3a4b
-        path: /ok4
-        to: /new
     post:
       - id: post-d108
         path: /ok2
