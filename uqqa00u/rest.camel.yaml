@@ -1,18 +1,11 @@
 - rest:
     id: rest-a934
-    get:
-      - id: get-8b85
+    delete:
+      - id: delete-26f9
         path: /ok6
         to: /new
     head:
       - id: head-1115
         path: /ok5
-        to: /new
-      - id: head-2b2a
-        path: /ok7
-        to: /new
-    post:
-      - id: post-33dd
-        path: /ok4
         to: /new
     path: /lolllqq
