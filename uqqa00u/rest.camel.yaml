@@ -1,11 +1,6 @@
 - rest:
     id: rest-a934
-    delete:
-      - id: delete-26f9
-        path: /ok6
-        to: /new
-    head:
-      - id: head-1115
-        path: /ok5
-        to: /new
+    patch:
+      - id: patch-c485
+        path: /ok7
     path: /lolllqq
