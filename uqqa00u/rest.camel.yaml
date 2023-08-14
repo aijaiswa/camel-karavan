@@ -4,12 +4,15 @@
       - id: get-8b85
         path: /ok6
         to: /new
-    post:
-      - id: post-d108
-        path: /ok2
+    head:
+      - id: head-1115
+        path: /ok5
         to: /new
-    put:
-      - id: put-e9f9
-        path: /ok3
+      - id: head-2b2a
+        path: /ok7
+        to: /new
+    post:
+      - id: post-33dd
+        path: /ok4
         to: /new
     path: /lolllqq
