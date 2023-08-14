@@ -107,3 +107,22 @@
               simple:
                 expression: ${body}
                 id: simple-c092
+
+
+- route:
+    id: route-6e48
+    from:
+      uri: rest:get:/planned:/orderNew
+      id: from-3358
+      steps:
+        - removeHeader:
+            name: Exchange.HTTP_PATH
+            id: removeHeader-48cz
+        - to:
+            uri: >-
+              https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata4/sap/api_plannedorder/srvd_a2x/sap/plannedorder/0001/PlannedOrderCapacity
+            id: to-b05s
+            parameters:
+              bridgeEndpoint: true
+              httpMethod: GET
+              copyHeaders: true
