@@ -236,19 +236,20 @@
                 id: constant-5536
 - rest:
     id: rest-a934
-    delete:
-      - id: delete-04f4
-        path: /ok5
     get:
       - id: get-8b85
-        path: /ok1
+        path: /ok6
+        to: /new
     patch:
       - id: patch-3a4b
         path: /ok4
+        to: /new
     post:
       - id: post-d108
         path: /ok2
+        to: /new
     put:
       - id: put-e9f9
         path: /ok3
+        to: /new
     path: /lolllqq
