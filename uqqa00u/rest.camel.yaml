@@ -1,0 +1,18 @@
+- route:
+    id: route-15a8
+    from:
+      uri: rest-api:/arooo
+      id: from-28d3
+- rest:
+    id: rest-b725
+    get:
+      - id: get-869d
+        path: /get1
+        to: /new
+      - id: get-8460
+        path: /get2
+        to: /new
+      - id: get-24c6
+        path: /get3
+        to: /new
+    path: /temp
