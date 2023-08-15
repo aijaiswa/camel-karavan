@@ -4,3 +4,13 @@
       - id: patch-c485
         path: /ok7
     path: /lolllqq
+- route:
+    id: route-6737
+    from:
+      uri: rest-api:/rest1
+      id: from-f5ad
+- route:
+    id: route-eda3
+    from:
+      uri: rest-api:/rest2
+      id: from-ad73
