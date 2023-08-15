@@ -1,7 +1,7 @@
 - route:
     id: route-59d4
     from:
-      uri: rest-api:/hii
+      uri: rest-api:/hi
       id: from-13f5
       steps:
         - transform:
