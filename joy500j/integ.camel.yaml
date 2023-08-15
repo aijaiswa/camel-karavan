@@ -22,3 +22,9 @@
               constant:
                 expression: trjwetowr
                 id: constant-f14a
+- rest:
+    id: rest-f1a2
+    get:
+      - id: get-3191
+        path: /hii
+    path: /temp
