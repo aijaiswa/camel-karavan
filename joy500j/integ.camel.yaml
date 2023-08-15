@@ -13,7 +13,7 @@
 - route:
     id: route-6e4b
     from:
-      uri: rest-api:/byee
+      uri: rest-api:/bye
       id: from-84a3
       steps:
         - transform:
