@@ -1,7 +1,7 @@
 apiVersion: camel.apache.org/v1alpha1
 kind: Kamelet
 metadata:
-  name: ash-custom-timer
+  name: ash-timer-source
   annotations:
     camel.apache.org/kamelet.support.level: "Stable"
     camel.apache.org/catalog.version: "3.20.1.1"
