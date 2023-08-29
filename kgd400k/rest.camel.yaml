@@ -1,0 +1,24 @@
+- rest:
+    id: rest-a934
+    patch:
+      - id: patch-c485
+        path: /ok7
+    put:
+      - id: put-a3a8
+        path: /ok8
+    path: /lolllqq
+- route:
+    id: route-6737
+    from:
+      uri: rest-api:/rest3
+      id: from-f5ad
+- route:
+    id: route-eda3
+    from:
+      uri: rest-api:/rest2
+      id: from-ad73
+- route:
+    id: route-aba5
+    from:
+      uri: rest-api:rest4
+      id: from-a57b
