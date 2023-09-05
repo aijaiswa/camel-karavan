@@ -10,9 +10,10 @@ metadata:
     camel.apache.org/kamelet.group: "Timer"
   labels:
     camel.apache.org/kamelet.type: source
+    camel.apache.org/kamelet.verified: "true"
 spec:
   definition:
-    title: custom-timer
+    title: Custom Timer
     description: Produces periodic messages with a custom payload.
     required:
       - message
