@@ -1,0 +1,11 @@
+- route:
+    id: route-7165
+    from:
+      uri: kamelet:custom-timer
+      id: from-86e8
+      parameters:
+        message: MESSAGE FROM CUSTOM TIMER
+      steps:
+        - log:
+            message: ${body}
+            id: log-5638
