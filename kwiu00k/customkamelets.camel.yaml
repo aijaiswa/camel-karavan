@@ -1,0 +1,11 @@
+- route:
+    id: route-d3ba
+    from:
+      uri: kamelet:custom-timer
+      id: from-75b6
+      parameters:
+        message: Custom Time Message
+      steps:
+        - log:
+            message: ${body}
+            id: log-a095
