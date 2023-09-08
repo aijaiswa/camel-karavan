@@ -32,27 +32,3 @@ spec:
             bridgeEndpoint: true
             httpMethod: POST
             clearExpiredCookies: true
-        - removeHeaders:
-            pattern: CamelHttp*
-        - transform:
-            jsonpath: $.access_token
-        - setHeader:
-            name: Authorization
-            simple: Bearer ${body}
-        - setHeader:
-            name: Exchange.HTTP_PATH
-            simple: getbytitle('${header.title}')/items?$filter=${header.filter}
-        - setHeader:
-            name: Accept
-            constant: application/json;odata= nometadata
-        - setHeader:
-            name: Content-Type
-            constant: application/json;odata=verbose
-        - to:
-            uri: >-
-              https://neomsa.sharepoint.com/sites/OXAGONWarehouseManagementSystem/_api/web/lists/
-            parameters:
-              bridgeEndpoint: true
-              httpMethod: GET
-              copyHeaders: true
-              clearExpiredCookies: true
