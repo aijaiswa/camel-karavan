@@ -15,10 +15,11 @@ spec:
     title: sharepoint-sink
     description: Fetch data from Sharepoint endpoint.
     required:
-    - url
+    - authtokenurl
+    - sharepointurl
     type: object
     properties:
-      url:
+      authtokenurl:
         title: Auth Token URL
         description: Auth Token service URL.
         type: string
@@ -29,11 +30,12 @@ spec:
         description: The HTTP method to use.
         type: string
         default: POST
-      contenttype:
-        title: Content-Type
-        description: Content Type.
+      sharepointurl:
+        title: Sharepoint URL
+        description: Sharepoint URL.
         type: string
-        default: application/x-www-form-urlencoded
+        example: "https://my-service/path"
+        pattern: "^(http|https)://.*"
   dependencies:
   - "camel:http"
   - "camel:kamelet"
@@ -51,11 +53,11 @@ spec:
           constant: "{{method}}"
       - set-header:
           name: Content-Type
-          constant: "{{contenttype}}"
+          constant: application/x-www-form-urlencoded
       - set-header:
           name: Exchange.HTTP_PATH
           simple: ${header.tenant-id}/tokens/OAuth/2
-      - to: "{{url}}"
+      - to: "{{authtokenurl}}"
         parameters: 
           bridgeEndpoint: true
           httpMethod: GET
@@ -65,3 +67,21 @@ spec:
             name: CamelHttpUri
       - transform:
           jsonpath: $.access_token
+      - set-header:
+          name: Authorization
+          simple: Bearer ${body}
+      - set-header:
+         name: Exchange.HTTP_PATH
+         simple: getbytitle('${header.title}')/items?$filter=${header.filter}
+      - set-header:
+         name: Accept
+         constant: application/json;odata= nometadata
+      - set-header:
+         name: Content-Type
+         constant: application/json;odata=verbose
+      - to: "{{sharepointurl}}"
+        parameters: 
+          bridgeEndpoint: true
+          httpMethod: GET
+          copyHeaders: true
+          clearExpiredCookies: true
