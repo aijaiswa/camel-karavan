@@ -29,6 +29,11 @@ spec:
         description: The HTTP method to use.
         type: string
         default: POST
+      contenttype:
+        title: Content-Type
+        description: Content Type.
+        type: string
+        default: application/x-www-form-urlencoded
   dependencies:
   - "camel:http"
   - "camel:kamelet"
@@ -39,7 +44,24 @@ spec:
       steps:
       - remove-header:
           name: CamelHttpUri
+      - transform:
+          simple: grant_type=client_credentials&client_id=${header.client-id}@${header.tenant-id}&client_secret=${header.client-secret}&resource=00000003-0000-0ff1-ce00-000000000000/neomsa.sharepoint.com@${header.tenant-id}
       - set-header:
           name: CamelHttpMethod
           constant: "{{method}}"
+      - set-header:
+          name: Content-Type
+          constant: "{{contenttype}}"
+      - set-header:
+          name: Exchange.HTTP_PATH
+          simple: ${header.tenant-id}/tokens/OAuth/2
       - to: "{{url}}"
+        parameters: 
+          bridgeEndpoint: true
+          httpMethod: GET
+          copyHeaders: true
+          clearExpiredCookies: true
+      - remove-header:
+            name: CamelHttpUri
+      - transform:
+          jsonpath: $.access_token
