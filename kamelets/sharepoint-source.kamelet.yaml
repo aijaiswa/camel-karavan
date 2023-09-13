@@ -19,8 +19,8 @@ spec:
     type: object
     properties:
       url:
-        title: URL
-        description: The URL to which you want to send data.
+        title: Auth Token URL
+        description: Auth Token service URL.
         type: string
         example: "https://my-service/path"
         pattern: "^(http|https)://.*"
