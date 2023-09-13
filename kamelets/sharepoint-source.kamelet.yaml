@@ -1,7 +1,7 @@
 apiVersion: camel.apache.org/v1alpha1
 kind: Kamelet
 metadata:
-  name: sharepoint-sink
+  name: sharepoint-source
   annotations:
     camel.apache.org/kamelet.support.level: "Stable"
     camel.apache.org/catalog.version: "3.20.1.1"
@@ -9,10 +9,10 @@ metadata:
     camel.apache.org/provider: "Apache Software Foundation"
     camel.apache.org/kamelet.group: "HTTP"
   labels:
-    camel.apache.org/kamelet.type: sink
+    camel.apache.org/kamelet.type: source
 spec:
   definition:
-    title: sharepoint-sink
+    title: sharepoint-source
     description: Fetch data from Sharepoint endpoint.
     required:
     - authtokenurl
