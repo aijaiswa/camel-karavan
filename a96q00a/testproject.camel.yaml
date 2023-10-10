@@ -1,0 +1,11 @@
+- route:
+    id: route-a224
+    from:
+      uri: direct:test
+      id: from-56d3
+      steps:
+        - to:
+            uri: kamelet:xj-identity-action
+            id: to-ad14
+            parameters:
+              direction: JSON2XML
