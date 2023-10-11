@@ -5,7 +5,7 @@
       id: from-56d3
       steps:
         - to:
-            uri: kamelet:xj-identity-action
-            id: to-ad14
+            uri: xj:identity
+            id: to-dc98
             parameters:
-              direction: JSON2XML
+              transformDirection: JSON2XML
