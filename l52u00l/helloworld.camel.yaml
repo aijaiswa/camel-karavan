@@ -1,11 +1,39 @@
+- restConfiguration:
+    dataFormatProperty:
+      - key: prettyPrint
+        value: 'true'
+    apiProperty:
+      - key: api.title
+        value: Sample API
+      - key: api.version
+        value: '1.0'
+      - key: cors
+        value: 'true'
+    component: platform-http
+    contextPath: /
+    apiContextPath: /api-docs
+    bindingMode: json
+    apiComponent: swagger
+    host: integration-apis.uat.oxagon.internal
+    port: '80'
+    producerComponent: http
+    apiHost: integration-apis.uat.oxagon.internal
 - route:
-    id: route-7165
+    id: route-229e
     from:
-      uri: kamelet:custom-timer
-      id: from-86e8
-      parameters:
-        message: MESSAGE FROM CUSTOM TIMER
+      uri: direct:sample
+      id: from-3664
       steps:
-        - log:
-            message: ${body}
-            id: log-5638
+        - transform:
+            id: transform-8028
+            expression:
+              constant:
+                expression: Hello World
+                id: constant-c54b
+- rest:
+    id: rest-fa09
+    get:
+      - id: get-4dfb
+        path: /test
+        to: direct:sample
+    path: /rest
