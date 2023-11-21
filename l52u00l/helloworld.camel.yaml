@@ -1,23 +1,10 @@
-- restConfiguration:
-    dataFormatProperty:
-      - key: prettyPrint
-        value: 'true'
-    apiProperty:
-      - key: api.title
-        value: Sample API
-      - key: api.version
-        value: '1.0'
-      - key: cors
-        value: 'true'
-    component: platform-http
-    contextPath: /
-    apiContextPath: /api-docs
-    bindingMode: json
-    apiComponent: swagger
-    host: integration-apis.uat.oxagon.internal
-    port: '80'
-    producerComponent: http
-    apiHost: integration-apis.uat.oxagon.internal
+- rest:
+    id: rest-fa09
+    get:
+      - id: get-4dfb
+        path: /test
+        to: direct:sample
+    path: /rest
 - route:
     id: route-229e
     from:
@@ -30,10 +17,23 @@
               constant:
                 expression: Hello World
                 id: constant-c54b
-- rest:
-    id: rest-fa09
-    get:
-      - id: get-4dfb
-        path: /test
-        to: direct:sample
-    path: /rest
+- restConfiguration:
+    dataFormatProperty:
+      - key: prettyPrint
+        value: 'true'
+    apiProperty:
+      - key: api.title
+        value: Sample API
+      - key: api.version
+        value: '1.0'
+      - key: cors
+        value: 'true'
+    component: platform-http
+    contextPath: /ap
+    apiContextPath: /api-docs
+    bindingMode: json
+    apiComponent: swagger
+    host: integration-apis.uat.oxagon.internal
+    port: '80'
+    producerComponent: http
+    apiHost: integration-apis.uat.oxagon.internal
