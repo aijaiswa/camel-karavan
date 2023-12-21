@@ -1,0 +1,24 @@
+- route:
+    id: route-753a
+    from:
+      uri: direct:authneom
+      id: from-757e
+      steps:
+        - removeHeader:
+            name: Exchange.HTTP_PATH
+            id: removeHeader-1749
+        - to:
+            uri: >-
+              https://oxagon-idp.uat.oxagon.internal/auth/realms/demo-appconnect/protocol/openid-connect/userinfo
+            id: to-eca6
+            parameters:
+              httpMethod: GET
+              bridgeEndpoint: true
+              copyHeaders: true
+- rest:
+    id: rest-d691
+    get:
+      - id: get-3fa1
+        path: /authneomkeycloak
+        to: direct:authneom
+    path: /rest
