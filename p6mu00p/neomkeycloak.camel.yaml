@@ -1,3 +1,10 @@
+- rest:
+    id: rest-d691
+    get:
+      - id: get-3fa1
+        path: /authneomkeycloak
+        to: direct:authneom
+    path: /rest
 - route:
     id: route-753a
     from:
@@ -15,10 +22,3 @@
               httpMethod: GET
               bridgeEndpoint: true
               copyHeaders: true
-- rest:
-    id: rest-d691
-    get:
-      - id: get-3fa1
-        path: /authneomkeycloak
-        to: direct:authneom
-    path: /rest
