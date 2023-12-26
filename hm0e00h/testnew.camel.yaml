@@ -1,3 +1,10 @@
+- rest:
+    id: rest-4727
+    get:
+      - id: get-1474
+        to: direct:authnew
+        path: /getnew
+    path: /rest
 - route:
     id: route-5bd2
     from:
@@ -5,6 +12,7 @@
       id: from-3160
       steps:
         - removeHeader:
+            name: Exchange.HTTP_PATH
             id: removeHeader-108f
         - to:
             uri: >-
@@ -14,10 +22,3 @@
               httpMethod: GET
               copyHeaders: true
               bridgeEndpoint: true
-- rest:
-    id: rest-4727
-    get:
-      - id: get-1474
-        to: direct:authnew
-        path: /getnew
-    path: /rest
