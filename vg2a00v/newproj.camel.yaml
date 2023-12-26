@@ -1,0 +1,24 @@
+- route:
+    id: route-4bc9
+    from:
+      uri: direct:auth
+      id: from-4d6e
+      steps:
+        - removeHeader:
+            name: Exchange.HTTP_PATH
+            id: removeHeader-7e0f
+        - to:
+            uri: >-
+              https://oxagon-idp.uat.oxagon.internal/auth/realms/demo-appconnect/protocol/openid-connect/userinfo
+            id: to-f970
+            parameters:
+              bridgeEndpoint: true
+              copyHeaders: true
+              httpMethod: GET
+- rest:
+    id: rest-dd5c
+    get:
+      - id: get-d952
+        to: direct:auth
+        path: /auth
+    path: /rest
