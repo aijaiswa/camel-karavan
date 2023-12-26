@@ -1,0 +1,23 @@
+- route:
+    id: route-5bd2
+    from:
+      uri: direct:authnew
+      id: from-3160
+      steps:
+        - removeHeader:
+            id: removeHeader-108f
+        - to:
+            uri: >-
+              https://oxagon-idp.uat.oxagon.internal/auth/realms/demo-appconnect/protocol/openid-connect/userinfo
+            id: to-edb4
+            parameters:
+              httpMethod: GET
+              copyHeaders: true
+              bridgeEndpoint: true
+- rest:
+    id: rest-4727
+    get:
+      - id: get-1474
+        to: direct:authnew
+        path: /getnew
+    path: /rest
