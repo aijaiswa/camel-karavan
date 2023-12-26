@@ -14,6 +14,14 @@
         - removeHeader:
             name: Exchange.HTTP_PATH
             id: removeHeader-108f
+        - setHeader:
+            name: Authorization
+            id: setHeader-640e
+            expression:
+              constant:
+                expression: >-
+                  Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJTaWpfaz
+                id: constant-e768
         - to:
             uri: >-
               https://oxagon-idp.uat.oxagon.internal/auth/realms/demo-appconnect/protocol/openid-connect/userinfo
